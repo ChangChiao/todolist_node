@@ -1,6 +1,6 @@
 const { successHandle, errorHandle } = require('../handler');
 const TODO = require('../models/todos');
-const postTodo = (res, req, body) => {
+const postTodo = (req, res, body) => {
 	req.on('end', async () => {
 		try {
 			const { title, status } = JSON.parse(body);
