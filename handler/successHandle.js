@@ -5,14 +5,14 @@ const header = require('../config/header');
  * @param {Array} todos - todolist
  */
 function successHandle(res, todos) {
-  res.writeHead(200, header);
-  res.write(
-    JSON.stringify({
-      status: 'success',
-      todos,
-    })
-  );
-  res.end();
+	res.writeHead(200, header);
+	res.write(
+		JSON.stringify({
+			status: 'success',
+			todos,
+		})
+	);
+	res.end();
 }
 
 module.exports = successHandle;

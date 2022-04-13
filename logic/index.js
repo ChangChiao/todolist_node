@@ -4,8 +4,8 @@ const deleteTodo = require('./deleteTodo');
 const patchTodo = require('./patchTodo');
 
 module.exports = {
-  getTodo,
-  postTodo,
-  deleteTodo,
-  patchTodo,
+	getTodo,
+	postTodo,
+	deleteTodo,
+	patchTodo,
 };

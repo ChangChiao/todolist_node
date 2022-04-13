@@ -5,14 +5,14 @@ const header = require('../config/header');
  * @param {number} errorCode http status code
  */
 const errorHandle = (res, errorMessage, errorCode = 400) => {
-  res.writeHead(errorCode, header);
-  res.write(
-    JSON.stringify({
-      status: 'false',
-      message: errorMessage,
-    })
-  );
-  res.end();
+	res.writeHead(errorCode, header);
+	res.write(
+		JSON.stringify({
+			status: 'false',
+			message: errorMessage,
+		})
+	);
+	res.end();
 };
 
 module.exports = errorHandle;
