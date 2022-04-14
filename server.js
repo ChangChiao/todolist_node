@@ -26,6 +26,7 @@ const requestListener = (req, res) => {
 
 	req.on('data', (chunk) => {
 		body += chunk;
+		console.log('data===');
 	});
 
 	if (req.url == '/todos' && req.method == 'GET') {
@@ -33,16 +34,21 @@ const requestListener = (req, res) => {
 		getTodo(res);
 	} else if (req.url == '/todos' && req.method == 'POST') {
 		// postTodo.js
-		postTodo(req, res, body);
+		req.on('end', async () => {
+			postTodo(req, res, body);
+
+		});
 	} else if (req.url == '/todos' && req.method == 'DELETE') {
 		// deleteTodo.js
-		deleteTodo.deleteTodoAll(req, res);
+		deleteTodo.deleteTodoAll(res);
 	} else if (req.url.startsWith('/todos/') && req.method == 'DELETE') {
 		// deleteTodo.js
 		deleteTodo.deleteTodoSingle(req, res);
 	} else if (req.url.startsWith('/todos/') && req.method == 'PATCH') {
 		// patchTodo.js
-		patchTodo(req, res, body);
+		req.on('end', async () => { 
+			patchTodo(req, res, body);
+		});
 	} else if (req.method == 'OPTIONS') {
 		successHandle(res, {});
 	} else {
