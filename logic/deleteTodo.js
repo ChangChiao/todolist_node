@@ -10,7 +10,7 @@ const deleteTodoSingle = async (req, res) => {
 	const id = req.url.split('/').pop();
 	try {
 		// eslint-disable-next-line no-unused-vars
-		const target = await Todo.findByIdAndDelete(id);
+		await Todo.findByIdAndDelete(id);
 		successHandle(res, {});
 	} catch (error) {
 		errorHandle(res, '無此id');
